@@ -1,0 +1,120 @@
+html * {
+  box-sizing: border-box;
+}
+body{
+    background: #f3f3f3;
+    color: #000000;
+    font-size: 11px;
+    font-family: Verdana, Geneva, sans-serif;
+    min-width: 100%;
+    margin-top: 5px;
+    margin: 0;
+    padding: 0;
+}
+.main{
+    background: #ffffff;
+    top: 5px;
+    margin: auto;
+    width: 75%;
+    overflow: hidden;
+    margin-top: 5px;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+.font3{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.font4{
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+a{
+    color: #484848;
+    text-decoration: none;
+}
+header {
+    padding:5px;
+    border-bottom: 1px solid;
+    border-collapse: collapse; 
+}
+nav {
+    width: 15%;
+    max-width: 500px;
+    float: left;
+    z-index: 1;
+    position: relative;
+    padding: 5px;
+    border-collapse: collapse;
+}
+section {
+    min-height: 500px;
+    position: relative;
+    width: 100%;
+    float: left;
+    padding: 5px;
+}
+footer {
+    clear: both;
+    text-align: center;
+    padding: 5px; 
+    border-top: 1px solid;
+    border-collapse: collapse;
+}
+.boxer {
+    display: table;
+    border-collapse: collapse;
+}
+.boxer .box-row {
+    display: table-row;
+    padding: 5px;
+}
+.boxer .box {
+    display: table-cell;
+    text-align: left;
+    padding: 5px;
+}
+.box_cms{
+    display: inline-table;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid;
+}
+.box_edit{
+    display: table-cell;
+    text-align: left;
+    padding: 5px;
+    vertical-align: middle;
+    border: 1px solid;
+    width: 250px;
+}
+.box_edit_small{
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    padding: 5px;  
+    border: 1px solid;
+    width: 50px;
+}
+.box_gallery{
+    display: inline-table;
+    padding: 5px;
+    margin: 2px;
+    text-align: center;
+    vertical-align: middle;
+}
+.marginpx{
+    padding: 5px;
+}
+.mtop{
+    margin-top: 5px;
+}
+hr{
+    border: 0px;
+    border-bottom: 1px solid;
+}
+img{
+    border: none;
+}

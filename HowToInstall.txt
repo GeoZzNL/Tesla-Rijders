@@ -1,0 +1,6 @@
+HOW TO INSTALL
+---
+1. Go to config.php and enter the details of your MySQL server, also change the $website_url value to you
+website URL.
+2. Go to install.php and if you do not get an error(in which case config.php isn't configured right) delete the file.
+3. If for some weird reason install.php did not work for you, go to sql.sql and copy that to your phpmyadmin.

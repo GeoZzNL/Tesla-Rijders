@@ -86,16 +86,16 @@
     <label for="phidden">Hidden:</label><br />
     <input type="checkbox" name="phidden" <?php echo($fetchp['phidden'] == 'on' ? 'checked="checked"' : ''); ?> /><hr />
     <label for="pcontent">Header title:</label><br />
-    <textarea name="htitle" id="htitle" rows="3" cols="80"><?php echo $fetchp['htitle']; ?></textarea><br />
-    <script>
-        CKEDITOR.replace('htitle', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]'});
-    </script>
+    <textarea name="htitle" id="htitle" rows="10" cols="80"><?php echo $fetchp['htitle']; ?></textarea><br />
     <label for="pcontent">Page content:</label><br />
     <textarea name="pcontent" id="pcontent" rows="10" cols="80"><?php echo $fetchp['pcontent']; ?></textarea><br />
+    <input type="submit" value="Submit" />
+    <script>
+        CKEDITOR.replace('htitle', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', height: '150px'});
+    </script>
     <script>
         CKEDITOR.replace('pcontent', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]'});
     </script>
-    <input type="submit" value="Submit" />
     </form>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){

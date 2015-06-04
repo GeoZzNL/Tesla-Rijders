@@ -75,9 +75,7 @@ if(isset($_SESSION['admin']) && in_array($_SESSION['admin'], $fetch)){
 <?php
     if(empty($_GET['do'])){
 ?>
-<p>Je bent ingelogd als Tesla Rijders Admin.</p>
-<p>Beheer uw website via bovenstaande buttons.</p>
-<p>Bent u geen Admin van Tesla Rijders? <a href="index.php?p=cms&do=logout" alt="Logout" >Klik hier om uit te loggen</a></p>
+<p>U bent ingelogd als Tesla Rijders Admin, u kunt de website beheren met de bovenstaande knoppen.</p>
 <?php
     }
 ?>

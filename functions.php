@@ -382,5 +382,15 @@
         }
     }
     
+    //mail
+    function newmail(){
+        $to      = 'nobody@example.com';
+        $subject = 'Activatie e-mail';
+        $message = nl2br("Klik aub op deze link om uw account te activeren:
+        ");
+        $headers = 'From: webmaster@example.com';
+        
+        mail($to, $subject, $message, $headers);
+    }  
 	
 ?>

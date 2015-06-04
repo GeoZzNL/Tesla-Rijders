@@ -33,6 +33,7 @@
 	<link href="assets/style/fonts.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link href="assets/js/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/style/main.css" rel="stylesheet" type="text/css" />
 
 	<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 	

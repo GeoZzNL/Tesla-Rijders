@@ -311,7 +311,7 @@
                     
                     if($fetchpn['pname'] != NULL){
                         echo'
-                        <div class="font3"></div>' .
+                        <div class="font3">asd</div>' .
                         
                         $fetchpn['pcontent'];
                     }

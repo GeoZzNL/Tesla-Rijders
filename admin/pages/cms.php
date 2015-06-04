@@ -8,8 +8,9 @@ if(isset($_SESSION['admin']) && in_array($_SESSION['admin'], $fetch)){
     }
     if(empty($_GET['do'])){
 ?>
-<p>Welkom <?php echo $_SESSION['admin']; ?> bij het content management system voor de website.<br /><br />
-Voor een FAQ kunt u <a href="index.php?p=cms&do=faq">hier</a> terecht.</p>
+<div class="mtop">
+<div class="font3">Welkom</div>
+Welkom <?php echo $_SESSION['admin']; ?> bij het content management system voor de website.
 <?php
     }
 ?>

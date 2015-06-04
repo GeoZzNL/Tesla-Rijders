@@ -203,24 +203,11 @@
             //responsive code end
         });
     </script>
-
-
-
-<div id="wrapper">
-	<div id="three-column" class="container">
-		
-	
-		<div class="boxB">
-		
+    <div id="page">
 			<?php
 				echo page($handler, $getp, $page, $fetcht, $fetchpn);
 			?>
-			
-		</div>
-	
-	</div>
-</div>
-</br>
+   </div>
 	<footer>
 
 		<ul class="icons">
@@ -232,7 +219,7 @@
 		</ul>
         <form method="post">
             <label for="newsletter">Nieuwsbrief:</label>
-            <input type="email" name="newsletter" placeholder="Vul hier uw email in" required/>
+            <input type="email" name="newsletter" placeholder="Vul hier uw email in" autocomplete="off" required/>
             <input type="submit" value="Schrijf in" />
         </form>
         <?php

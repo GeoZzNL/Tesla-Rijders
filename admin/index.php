@@ -78,7 +78,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.php?p=usermanagement">
+                    <a href="index.php?p=cms&do=usermanagement">
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
                             Gebruikersbeheer

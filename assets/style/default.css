@@ -1,6 +1,6 @@
 @import url("font-awesome.min.css");
-@import url("http://fonts.googleapis.com/css?family=Lato:300,400,900");	
-	
+@import url("http://fonts.googleapis.com/css?family=Lato:300,400,900");
+
 	html, body
 	{
 		height: 100%;
@@ -415,8 +415,11 @@
 /* Page                                                                          */
 /*********************************************************************************/
 
-	#page
-	{
+	#page{
+	    padding-top: 10px;
+        margin: 0 auto;
+        width: 75%;
+        min-height: 500px;
 	}
 
 /*********************************************************************************/
@@ -508,7 +511,6 @@
 
 	#three-column
 	{
-		text-align: center;
 		color: rgba(0,0,0,0.6);
 	}
 

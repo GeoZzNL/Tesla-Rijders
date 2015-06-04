@@ -13,6 +13,7 @@ if(!isset($_SESSION['admin']) || !in_array($_SESSION['admin'], $fetch)){
         <div class="box-cell"><input type="password" name="password" /></div></div>
         <div class="box-row" style="clear: both; float: right;"><div class="box-cell"><input type="submit" name="login" value="Login" /></div></div>
     </form>
+    <a href="index.php?p=forgottenpassword">Wachtwoord vergeten?</a>
 </div>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -40,6 +40,21 @@
         $pw             = $fetchpw['password'];
         
         if(!empty($username) && !empty($password)){
+            /*$uid        = $handler->query("SELECT * FROM users WHERE username = '$username'");
+            $uiddisplay = (($uid->rowCount()? $uiddisplay = $uid->fetch(PDO::FETCH_ASSOC) : NULL)); 
+            
+            $query  = $handler->prepare("INSERT INTO loginattempts (u_id, ip) VALUES (:uiddisplay, :ip)");
+            
+            try{
+                $query->execute(array(
+                ':uiddisplay'   => $uiddisplay['id'],
+                ':ip'           => $_SERVER['REMOTE_ADDR']
+                ));
+            }
+            catch(PDOException $e){
+                echo'Er ging iets fout, probeer het opnieuw.';
+            }*/
+            
             if(password_verify($_POST['password'], $pw)){
                 $_SESSION['admin'] = $username;
                 
@@ -380,6 +395,17 @@
             <div class="font3">Error</div>
             There are no pages in the database.';
         }
+    }
+    
+    //Random string
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
     
     //mail

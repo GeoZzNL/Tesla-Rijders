@@ -34,6 +34,10 @@ body{
     font-weight: bold;
     margin-bottom: 5px;
 }
+.usermanagement{
+    display: table-cell;
+    vertical-align: middle;
+}
 a{
     color: #484848;
     text-decoration: none;

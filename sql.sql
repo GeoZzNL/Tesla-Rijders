@@ -37,7 +37,7 @@ CREATE TABLE settings(
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `loginattempts` (
+/*CREATE TABLE `loginattempts` (
   `id` INT NOT NULL,
   `u_id` INT NULL,
   `date` DATETIME,
@@ -47,7 +47,7 @@ CREATE TABLE `loginattempts` (
     REFERENCES `users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
 
 INSERT INTO `settings` (`id`, `sname`, `galleryn`, `gallery`, `email`, `footer`, `description`, `keywords`)
 VALUES (NULL, 'Site name', 'Default gallery', 'false', 'example@example.com', 'This website is using Goat CMS.', 'A short description of your site', 'Some keywords for your website seperated by a comma');

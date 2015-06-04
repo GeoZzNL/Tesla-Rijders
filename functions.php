@@ -154,7 +154,7 @@
     }
     //Upload image
     function upload($galleryn, $gallerydesc, $handler){
-        $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/pages/img/';
+        $target_dir = '../pages/img/';
         $target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

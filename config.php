@@ -8,7 +8,7 @@ session_start();
 ob_start();
 
 $mysqldb    = '127.0.0.1';  //Mysql database
-$dbname     = 'tesla';//Mysql database name
+$dbname     = 'cms';        //Mysql database name
 $mysqluser  = 'root';       //Mysql username
 $mysqlpass  = '';           //Mysql password
 

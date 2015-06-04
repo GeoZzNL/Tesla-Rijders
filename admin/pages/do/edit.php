@@ -86,9 +86,9 @@
     <label for="phidden">Hidden:</label><br />
     <input type="checkbox" name="phidden" <?php echo($fetchp['phidden'] == 'on' ? 'checked="checked"' : ''); ?> /><hr />
     <label for="pcontent">Header title:</label><br />
-    <textarea name="htitle" id="htitle" rows="10" cols="80"><?php echo $fetchp['htitle']; ?></textarea><br />
+    <textarea name="htitle" id="htitle"><?php echo $fetchp['htitle']; ?></textarea><br />
     <label for="pcontent">Page content:</label><br />
-    <textarea name="pcontent" id="pcontent" rows="10" cols="80"><?php echo $fetchp['pcontent']; ?></textarea><br />
+    <textarea name="pcontent" id="pcontent"><?php echo $fetchp['pcontent']; ?></textarea><br />
     <input type="submit" value="Submit" />
     <script>
         CKEDITOR.replace('htitle', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', height: '150px'});

@@ -57,13 +57,13 @@
             <!-- Slides Container -->
             <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px; height: 500px; overflow: hidden;">
                 <div>
-                    <img u="image" src2="images/header-bg.jpg" />
+                    <img u="image" src="images/header-bg.jpg" />
                 </div>
                 <div>
-                    <img u="image" src2="images/header-bg1.jpg" />
+                    <img u="image" src="images/header-bg1.jpg" />
                 </div>
                 <div>
-                    <img u="image" src2="images/header-bg2.jpg" />
+                    <img u="image" src="images/header-bg2.jpg" />
                 </div>
 				
             </div>
@@ -221,7 +221,7 @@
 	</div>
 </div>
 </br>
-	<footer id="footer">
+	<footer>
 
 		<ul class="icons">
 			<li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
@@ -230,19 +230,37 @@
 			<li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
 			<li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
 		</ul>
-
-	</footer>
-	
+        <form method="post">
+            <label for="newsletter">Nieuwsbrief:</label>
+            <input type="email" name="newsletter" placeholder="Vul hier uw email in" required/>
+            <input type="submit" value="Schrijf in" />
+        </form>
+        <?php
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $email  = $_POST['newsletter'];
+                $ip     = $_SERVER['REMOTE_ADDR'];
+                
+                $query  = $handler->prepare('INSERT INTO newsletter (email, ip) VALUES (:email, :ip)');
+                
+                try{
+                    $query->execute(array(
+                        ':email'    => $email,
+                        ':ip'       => $ip
+                    ));
+                }
+                catch(PDOException $e){
+                    echo'Het email address bestaat al.';
+                }
+            }
+        ?>
 	<div id="copyright" class="container">
-
-
 	 <?php
             $getse  = $handler->query("SELECT * FROM settings");
             $fetch  = $getse->fetch(PDO::FETCH_ASSOC);
             
             echo $fetch['footer'];
-    ?>
-		
+    ?>	
 	</div>
+	</footer>
 </body>
 </html>

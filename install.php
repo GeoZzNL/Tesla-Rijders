@@ -69,6 +69,13 @@
             `imagedesc` TEXT NOT NULL,
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB;
+        
+        CREATE TABLE newsletter(
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `email` varchar(255) NOT NULL,
+            `ip` varchar(255) NOT NULL,
+            PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB;
     ";
     
     $do = $handler->prepare($query);

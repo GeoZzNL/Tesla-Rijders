@@ -95,14 +95,14 @@
     }
     
     //Add page
-    function add($pname, $titlef, $pcontent, $phidden, $handler){
+    function add($pname, $titlef, $pcontent, $phidden, $htitle, $handler){
         if(empty($pname)){
             return"<div class='font4'>You can't leave a field empty.</div>";
         }
         else{
             $sql = 'ALTER TABLE pages AUTO_INCREMENT = 1';
             $handler->query($sql);
-            $sql = 'INSERT INTO pages (ptitle, pname, pcontent, phidden) VALUES (:ptitle, :pname, :pcontent, :phidden)';
+            $sql = 'INSERT INTO pages (ptitle, pname, pcontent, phidden, htitle) VALUES (:ptitle, :pname, :pcontent, :phidden, :htitle)';
             $query = $handler->prepare($sql);
             
             try{
@@ -110,7 +110,8 @@
                 ':ptitle'   => $titlef,
                 ':pname'    => $pname,
                 ':pcontent' => $pcontent,
-                ':phidden'  => $phidden
+                ':phidden'  => $phidden,
+                ':htitle'   => $htitle
                 ));
                 return'<div class="font4">The page has been submitted.</div>';
             }
@@ -214,7 +215,7 @@
     
     //Upload hidden image
     function uploadhidden($galleryn, $gallerydesc, $handler){
-        $target_dir = $_SERVER['DOCUMENT_ROOT'] . '/pages/hiddenimg/';
+        $target_dir = '../pages/hiddenimg/';
         $target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

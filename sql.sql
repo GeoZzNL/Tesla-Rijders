@@ -3,6 +3,7 @@ CREATE TABLE users(
     `username` varchar(50) NOT NULL,
     `password` varchar(255) NOT NULL,
     `email` varchar(50) NOT NULL,
+    `rank`  int(10) DEFAULT '0',
     PRIMARY KEY (`id`),
     UNIQUE KEY `username` (`username`),
     UNIQUE KEY `email` (`email`)
@@ -14,6 +15,7 @@ CREATE TABLE pages(
     `pname` varchar(50) NOT NULL,
     `pcontent` LONGTEXT NOT NULL,
     `phidden` varchar(50) NOT NULL,
+    `htitle` varchar(2500) NOT NULL,
     `puseridadd` varchar(255) NOT NULL,
     `postdate` DATETIME,
     `puseridedit` varchar(255),
@@ -42,7 +44,7 @@ CREATE TABLE `loginattempts` (
   `ip` VARCHAR(100) NULL,
   CONSTRAINT `u_id`
     FOREIGN KEY (`id`)
-    REFERENCES `mydb`.`users` (`id`)
+    REFERENCES `users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -26,7 +26,7 @@
     <div class="boxer" style="width: 50%;">
         <div class="box-row">
             <div class="box_edit">Thumbnail</div>
-            <!--<div class="box_edit">Edit description</div>-->
+            <div class="box_edit">url</div>
             <div class="box_edit">Delete</div>
     </div>
 <?php
@@ -44,7 +44,8 @@
         
         echo"
             <div class='box-row' style='background: $color'>
-                <div class='box_edit'><div class='marginpx'><img src='" . $website_url . "pages/hiddenimg/" . $fetchimage['imagen'] . "' style='width: 128px; height: 100px;' title='" . $fetchimage['imagedesc'] . "' alt='" . $fetchimage['imagedesc'] . "'/></div></div>
+                <div class='box_edit'><div class='marginpx'><img src='../pages/hiddenimg/" . $fetchimage['imagen'] . "' style='width: 128px; height: 100px;' title='" . $fetchimage['imagedesc'] . "' alt='" . $fetchimage['imagedesc'] . "'/></div></div>
+                <div class='box_edit'><input type='text' value='" . $website_url . "pages/hiddenimg/" . $fetchimage['imagen'] . "' onFocus='this.select()' /></div>
                 <div class='box_edit'><a href='index.php?p=cms&do=gallery&del=" . $fetchimage['id'] . "'>Delete</a></div>
             </div>
         ";

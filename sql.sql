@@ -14,6 +14,10 @@ CREATE TABLE pages(
     `pname` varchar(50) NOT NULL,
     `pcontent` LONGTEXT NOT NULL,
     `phidden` varchar(50) NOT NULL,
+    `puseredit` varchar(255) NOT NULL,
+    `postdate` DATETIME,
+    `pedituser` varchar(255),
+    `editdate` DATETIME,
     PRIMARY KEY (`id`),
     UNIQUE KEY (`ptitle`),
     UNIQUE KEY (`pname`)
@@ -22,7 +26,6 @@ CREATE TABLE pages(
 CREATE TABLE settings(
     `id` int(10) NOT NULL AUTO_INCREMENT,
     `sname` varchar(100) DEFAULT 'Site name',
-    `advanced` varchar(10) DEFAULT 'false',
     `galleryn` varchar(100) DEFAULT 'Default gallery',
     `gallery` varchar(10) DEFAULT 'false',
     `email` varchar(50) DEFAULT 'example@example.com',
@@ -31,6 +34,17 @@ CREATE TABLE settings(
     `keywords` TEXT,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
+
+CREATE TABLE loginattempts(
+    `id` int(10) NOT NULL auto_increment,
+    `date` DATETIME NOT NULL,
+    `u_id` INT(10)
+    CONSTRAINT `u_id`
+    FOREIGN KEY (`id`)
+    REFERENCES `users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+) ENGINE=InnoDB
 
 INSERT INTO `settings` (`id`, `sname`, `advanced`, `galleryn`, `gallery`, `email`, `footer`, `description`, `keywords`)
 VALUES (NULL, 'Site name', 'false', 'Default gallery', 'false', 'example@example.com', 'This website is using Goat CMS.', 'A short description of your site', 'Some keywords for your website seperated by a comma');

@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.php?p=cms&do=memberlist">
+                    <a href="index.php?p=cms&do=usermanagement">
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
                             Gebruikersbeheer

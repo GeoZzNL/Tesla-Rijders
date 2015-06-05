@@ -70,5 +70,6 @@ CREATE TABLE newsletter(
     `id` INT NOT NULL AUTO_INCREMENT,
     `email` varchar(255) NOT NULL,
     `ip` varchar(255) NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`email`)
 ) ENGINE=InnoDB;

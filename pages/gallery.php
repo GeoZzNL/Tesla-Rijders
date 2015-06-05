@@ -3,10 +3,15 @@
                 <div class="box-row">
 <?php
     global $imagequery;
-    while($fetchimage = $imagequery->fetch(PDO::FETCH_ASSOC)){
-        echo"
-                    <div class='box_gallery'><img src='pages/img/" . $fetchimage['imagen'] . "' class='fancybox' style='width: 128px; max-height: 100%;' title='" . $fetchimage['imagedesc'] . "' alt='" . $fetchimage['imagedesc'] . "'/></div>
-        ";
+    if($imagequery->rowCount()){
+        while($fetchimage = $imagequery->fetch(PDO::FETCH_ASSOC)){
+            echo"
+                        <div class='box_gallery'><img src='pages/img/" . $fetchimage['imagen'] . "' class='fancybox' style='width: 128px; max-height: 100%;' title='" . $fetchimage['imagedesc'] . "' alt='" . $fetchimage['imagedesc'] . "'/></div>
+            ";
+        }
+    }
+    else{
+        echo'Er zijn nog geen afbeeldingen in de galerij';
     }
 ?>
                 </div>

@@ -382,6 +382,9 @@
 				if($fetchpn['pname'] != NULL){
 					echo $fetchpn['htitle'];
 				}
+                elseif($_GET['p'] == 'gallery'){
+                    
+                }
 				else{
 					echo'<h3>404 Error</h3>';
 				}

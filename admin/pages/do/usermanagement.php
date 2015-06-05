@@ -1,5 +1,5 @@
 <div class="font3">Gebruikersbeheer</div>
-<ul style="list-style-type:  none; margin: 0; padding: 0;">
+<ul style="list-style-type: none; margin: 0; padding: 0;">
     <li>
         <a href="index.php?p=cms&do=adduser">
             <i class="fa fa-plus fa-2x"></i>

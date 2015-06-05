@@ -232,7 +232,7 @@
 		</ul>
         <form method="post">
             <label for="newsletter">Nieuwsbrief:</label>
-            <input type="email" name="newsletter" placeholder="Vul hier uw email in" autocomplete="off" required/>
+            <input type="email" name="newsletter" placeholder="Vul hier uw email in" autocomplete="off" required />
             <input type="submit" value="Schrijf in" />
         </form>
         <?php

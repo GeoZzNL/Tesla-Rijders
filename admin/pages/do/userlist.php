@@ -15,7 +15,7 @@
                 <td>" . $fetch['id'] . "</td>
             	<td>" . $fetch['username'] . "</td>
             	<td>" . $fetch['email'] . "</td>
-            	<td><a href='index.php?p=cms&do=deleteuser&delete=" . $fetch['username'] . "'>Delete " . $fetch['username'] . "</a></td>
+            	<td><a href='index.php?p=cms&do=deleteuser&delete=" . $fetch['username'] . "' style='color: red;'>Delete " . $fetch['username'] . "</a></td>
             </tr>";
     }
 ?>

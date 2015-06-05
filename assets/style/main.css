@@ -3,3 +3,23 @@
     font-weight: bold;
     margin-bottom: 5px;
 }
+.boxer {
+    display: table;
+    border-collapse: collapse;
+}
+.boxer .box-row {
+    display: table-row;
+    padding: 5px;
+}
+.boxer .box {
+    display: table-cell;
+    text-align: left;
+    padding: 5px;
+}
+.box_gallery{
+    display: inline-table;
+    padding: 5px;
+    margin: 2px;
+    text-align: center;
+    vertical-align: middle;
+}

@@ -17,12 +17,23 @@
 <head>
 	<meta name="author" content="Tom Heek" />
     <link href="main.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.css" />
+    <style type="text/css">
+        a.fancybox img {
+            border: none;
+        } 
+    </style>
     
 	<title>CMS</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="ckeditor/ckeditor.js"></script>
+    <script src="codemirror/lib/codemirror.js"></script>
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
 <div class="main">
@@ -109,7 +120,7 @@
         </nav>
         <?php
             }
-        ?>    
+        ?>
     <section>
     <?php 
         if(isset($_GET['p'])){ 

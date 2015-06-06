@@ -3,11 +3,11 @@
     <form method="post">
         <tr>
             <td><label for="username">Gebruikersnaam:</label></td>
-            <td><input type="text" name="username" required /></td>
+            <td><input type="text" name="username" autocomplete="off" required /></td>
         </tr>
         <tr>
             <td><label for="email">E-mail address:</label></td>
-            <td><input type="email" name="email" required /></td>
+            <td><input type="email" name="email" autocomplete="off" required /></td>
         </tr>
         <tr>
             <td><label for="password">Password:</label></td>

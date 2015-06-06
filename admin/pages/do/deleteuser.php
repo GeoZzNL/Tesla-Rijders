@@ -6,9 +6,14 @@
         
         if($query->rowCount()){
             $query  = $handler->query("DELETE FROM users WHERE username = '$username'");
+            
+            echo'Het account is succevol verwijderd.<br />
+                Naam van het account: ' . $username . '<br /><br />
+                <a href="index.php?p=cms&do=userlist">Klik hier om terug te gaan</a>';
+            
         }
         else{
-            echo'bla';
+            echo'Het account dat je probeert te verwijderen bestaat niet.';
         }
     }
 ?>

@@ -177,7 +177,7 @@
             }
             echo"<div class='box-row' style='background: $color'>
                 		<div class='box_edit'>
-                            <a href='" . $website_url . "index.php?p=" . $fetchp['ptitle'] . "'>" . $fetchp['pname'] . "</a>
+                            <a href='../index.php?p=" . $fetchp['ptitle'] . "'>" . $fetchp['pname'] . "</a>
                         </div>
       		            <div class='box_edit_small'>
                             <a href='index.php?p=cms&do=edit&edit=" . $fetchp['ptitle'] . "'>Edit</a>

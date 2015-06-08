@@ -2,6 +2,8 @@
     include'config.php';
     require'functions.php';
     
+    echo date("T cest");
+    
     $getp           = $handler->query("SELECT * FROM pages");
     $gett           = $handler->query("SELECT * FROM settings LIMIT 1");
     $fetcht         = $gett->fetch(PDO::FETCH_ASSOC);

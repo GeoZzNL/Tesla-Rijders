@@ -42,16 +42,17 @@
         ) ENGINE=InnoDB;
         
         CREATE TABLE `loginattempts` (
-          `id` INT NOT NULL,
+          `id` INT NOT NULL auto_increment,
           `u_id` INT NULL,
           `date` DATETIME,
           `ip` VARCHAR(100) NULL,
+          PRIMARY KEY (`id`),
           CONSTRAINT `u_id`
-            FOREIGN KEY (`id`)
+            FOREIGN KEY (`u_id`)
             REFERENCES `users` (`id`)
             ON DELETE NO ACTION
-            ON UPDATE NO ACTION)
-        ENGINE = InnoDB;
+            ON UPDATE NO ACTION
+        )ENGINE = InnoDB;
         
         INSERT INTO `settings` (`id`, `sname`, `galleryn`, `gallery`, `email`, `footer`, `description`, `keywords`)
         VALUES (NULL, 'Site name', 'Default gallery', 'false', 'example@example.com', 'This website is using Goat CMS.', 'A short description of your site', 'Some keywords for your website seperated by a comma');

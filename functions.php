@@ -40,7 +40,7 @@
         $pw             = $fetchpw['password'];
         
         if(!empty($username) && !empty($password)){
-            /*$uid        = $handler->query("SELECT * FROM users WHERE username = '$username'");
+            $uid        = $handler->query("SELECT * FROM users WHERE username = '$username'");
             $uiddisplay = (($uid->rowCount()? $uiddisplay = $uid->fetch(PDO::FETCH_ASSOC) : NULL)); 
             
             $query  = $handler->prepare("INSERT INTO loginattempts (u_id, ip) VALUES (:uiddisplay, :ip)");
@@ -50,18 +50,18 @@
                 ':uiddisplay'   => $uiddisplay['id'],
                 ':ip'           => $_SERVER['REMOTE_ADDR']
                 ));
+                
+                if(password_verify($_POST['password'], $pw)){
+                    $_SESSION['admin'] = $username;
+                    
+                    header('Location: index.php?p=cms');
+                }
+                else{
+                    return'That password is not correct.';
+                }
             }
             catch(PDOException $e){
-                echo'Er ging iets fout, probeer het opnieuw.';
-            }*/
-            
-            if(password_verify($_POST['password'], $pw)){
-                $_SESSION['admin'] = $username;
-                
-                header('Location: index.php?p=cms');
-            }
-            else{
-                return'That password is not correct.';
+                echo $e->getMessage();
             }
         }
         else{
@@ -326,7 +326,7 @@
                     
                     if($fetchpn['pname'] != NULL){
                         echo'
-                        <div class="font3">asd</div>' .
+                        <div class="font3">' . $fetchpn['pname'] . '</div>' .
                         
                         $fetchpn['pcontent'];
                     }

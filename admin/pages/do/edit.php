@@ -94,7 +94,7 @@
         CKEDITOR.replace('htitle', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', height: '150px'});
     </script>
     <script>
-        CKEDITOR.replace('pcontent', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]'});
+        CKEDITOR.replace('pcontent', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', "filebrowserImageUploadUrl": "/plugins/imgupload.php"});
     </script>
     </form>
 <?php

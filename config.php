@@ -20,5 +20,5 @@ try{
     die('Something went wrong, please try again.');
 }
 
-$website_url = "http://localhost/";
+$website_url = "http://localhost/tesla-rijders/";
 ?>

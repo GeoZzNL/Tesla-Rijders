@@ -44,7 +44,7 @@
         CREATE TABLE `loginattempts` (
           `id` INT NOT NULL auto_increment,
           `u_id` INT NULL,
-          `date` DATETIME,
+          `date` DATETIME DEFAULT current_timestamp,
           `ip` VARCHAR(100) NULL,
           PRIMARY KEY (`id`),
           CONSTRAINT `u_id`

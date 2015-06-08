@@ -27,7 +27,7 @@
 	<title>CMS</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="ckeditor/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
     <script src="codemirror/lib/codemirror.js"></script>
     <script src="codemirror/mode/javascript/javascript.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

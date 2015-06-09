@@ -18,4 +18,10 @@
             <span class="usermanagement">Wijzig uw account</span>
         </a>
     </li>
+    <li>
+        <a href="index.php?p=cms&do=newsletter">
+            <i class="fa fa-envelope-o fa-2x"></i>
+            <span class="usermanagement">Nieuwsbrief</span>
+        </a>
+    </li>
 </ul>

@@ -94,18 +94,18 @@
                     ':email'    => $email
                 ));
                 
-                return'You have registered an account.';
+                return'<div class="font3">U hebt een account geregistreerd</div>';
                 }
                 catch(PDOException $e){
                     return'Something went wrong, please try again.';
                 }
             }
             else{
-                return'The passwords did not match.';
+                return'De wachtwoorden kwamen niet overeen.';
             }
         }
         else{
-            return'Please fill in all the fields.';
+            return'<div class="font3">U kunt het veld niet leeglaten.</div>';
         }
     }
     

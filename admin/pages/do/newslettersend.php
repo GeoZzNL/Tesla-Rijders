@@ -10,8 +10,8 @@
         if($_GET['allusers'] == 'true'){
 ?>
 <form method="post">
-    <label for="pname" class="font4">Onderwerp:</label><br />
-    <input type="text" name="pname" autocomplete="off" /><br /><hr />
+    <label for="subject" class="font4">Onderwerp:</label><br />
+    <input type="text" name="subject" autocomplete="off" /><br /><hr />
     <label for="newsletter" class="font4">Nieuwsbrief content:</label><br />
     <textarea name="newsletter" id="newsletter"></textarea>
     <input type="submit" value="Submit" />
@@ -21,11 +21,11 @@
 </form>
 <?php
             if($_SERVER['REQUEST_METHOD'] == 'POST'){                
-                if(!empty($_POST['newsletter'])){
+                if(!empty($_POST['newsletter']) && !empty($_POST['subject'])){
+                    $subject    = $_POST['subject'];
                     $newsletter = $_POST['newsletter'];
                     
                     while($fetch = $query->fetch(PDO::FETCH_ASSOC)){
-                        $subject = 'Activatie e-mail';
                         $message = nl2br($newsletter);
                         $headers = 'From: webmaster@example.com';
                     
@@ -45,8 +45,8 @@
         elseif($_GET['allusers'] == 'false'){
 ?>
 <form method="post">
-    <label for="pname" class="font4">Onderwerp:</label><br />
-    <input type="text" name="pname" autocomplete="off" /><br /><hr />
+    <label for="subject" class="font4">Onderwerp:</label><br />
+    <input type="text" name="subject" autocomplete="off" /><br /><hr />
     <div class="userbox">
     <?php
         $i = 0;
@@ -77,11 +77,11 @@
 </form>
 <?php
             if($_SERVER['REQUEST_METHOD'] == 'POST'){                
-                if(!empty($_POST['newsletter'])){
+                if(!empty($_POST['newsletter']) && !empty($_POST['subject'])){
+                    $subject    = $_POST['subject'];
                     $newsletter = $_POST['newsletter'];
                     
                     foreach($_POST['email'] as $to){
-                        $subject = 'Activatie e-mail';
                         $message = nl2br($newsletter);
                         $headers = 'From: webmaster@example.com';
                     

@@ -111,22 +111,27 @@
     
     //Add page
     function add($pname, $titlef, $pcontent, $phidden, $htitle, $handler){
+        $puseridadd  = $_SESSION['admin'];
+        
+        /*$query = $handler->query("SELECT * FROM users WHERE username = '$puseridadd'");
+        $fetch = $query->fetch(PDO::FETCH_ASSOC);
+        $puseridadd = $fetch['id'];*/                
+        
         if(empty($pname)){
             return"<div class='font4'>You can't leave a field empty.</div>";
         }
         else{
-            $sql = 'ALTER TABLE pages AUTO_INCREMENT = 1';
-            $handler->query($sql);
-            $sql = 'INSERT INTO pages (ptitle, pname, pcontent, phidden, htitle) VALUES (:ptitle, :pname, :pcontent, :phidden, :htitle)';
+            $sql = 'INSERT INTO pages (ptitle, pname, pcontent, phidden, htitle, puseridadd, postdate) VALUES (:ptitle, :pname, :pcontent, :phidden, :htitle, :puseridadd, current_timestamp)';
             $query = $handler->prepare($sql);
             
             try{
                 $query->execute(array(
-                ':ptitle'   => $titlef,
-                ':pname'    => $pname,
-                ':pcontent' => $pcontent,
-                ':phidden'  => $phidden,
-                ':htitle'   => $htitle
+                ':ptitle'       => $titlef,
+                ':pname'        => $pname,
+                ':pcontent'     => $pcontent,
+                ':phidden'      => $phidden,
+                ':htitle'       => $htitle,
+                ':puseridadd'   => $puseridadd
                 ));
                 return'<div class="font4">The page has been submitted.</div>';
             }
@@ -137,27 +142,33 @@
     }
     //Edit page
     function edit($handler, $id, $titlef, $pname, $phidden, $pcontent, $htitle){
+        $puseridedit  = $_SESSION['admin'];
+        
+        /*$query = $handler->query("SELECT * FROM users WHERE username = '$puseridedit'");
+        $fetch = $query->fetch(PDO::FETCH_ASSOC);
+        $puseridedit = $fetch['id'];*/
+                        
         if(empty($pname)){
             return"<div class='font4'>You can't leave a field empty.</div>";
         }
         else{
-            
-            $sql = "UPDATE pages SET ptitle = :ptitle, pname = :pname, pcontent = :pcontent, phidden = :phidden, htitle = :htitle WHERE id = '$id'";
+            $sql = "UPDATE pages SET ptitle = :ptitle, pname = :pname, pcontent = :pcontent, phidden = :phidden, htitle = :htitle, puseridedit = :puseridedit, editdate = current_timestamp WHERE id = '$id'";
             
             $query = $handler->prepare($sql);
             
             try{
                 $query->execute(array(
-                ':ptitle'   	=> 	$titlef,
-                ':pname'    	=> 	$pname,
-                ':pcontent' 	=> 	$pcontent,
-                ':phidden'  	=> 	$phidden,
-				':htitle'		=> 	$htitle,
+                ':ptitle'   	=> $titlef,
+                ':pname'    	=> $pname,
+                ':pcontent' 	=> $pcontent,
+                ':phidden'  	=> $phidden,
+				':htitle'		=> $htitle,
+                ':puseridedit'  => $puseridedit
                 ));
                 
-                return'<div class="font4">The page has been submitted.</div>';
-                
                 header('Location: index.php?p=cms&do=edit&edit=' . $titlef);
+                
+                return'<div class="font4">The page has been submitted.</div>';
             }
             catch(PDOException $e){
                 return'<div class="font4">Something went wrong, please try again.</div>';

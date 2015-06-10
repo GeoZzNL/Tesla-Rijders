@@ -85,6 +85,7 @@ footer {
 .boxer {
     display: table;
     border-collapse: collapse;
+    width: 75%;
 }
 .boxer .box-row {
     display: table-row;
@@ -115,7 +116,7 @@ footer {
     vertical-align: middle;
     padding: 5px;  
     border: 1px solid;
-    width: 50px;
+    width: 100px;
 }
 .box_gallery{
     display: inline-table;

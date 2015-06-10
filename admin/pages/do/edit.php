@@ -24,7 +24,7 @@
         elseif($_GET['edit'] != 'upload' || $_GET['edit'] != 'deleteimage'){
             if($_GET['edit'] == 'gallery'){
     ?>
-    <div class="boxer" style="width: 50%;">
+    <div class="boxer" style="width: 100%;">
         <div class="box-row">
             <div class="box_edit">Thumbnail</div>
             <!--<div class="box_edit">Edit description</div>-->
@@ -108,12 +108,9 @@
             
             
             echo edit($handler, $id, $titlef, $pname, $phidden, $pcontent, $htitle);
-            
-            header('Location: index.php?p=cms&do=edit&edit=' . $titlef);
-            
     }
-    }
-    }
+            }
+        }
     }
     elseif(!empty($_GET['p']) && !empty($_GET['do']) && !empty($_GET['delete'])){
         $ename  = makeFriendlyFix($_GET['delete']);
@@ -153,19 +150,16 @@
             echo'There are no pages in the database.';
         }
         else{
-            echo"
-                <div class='boxer' style='width: 50%;'>
-                	
-            ";
             ?>
-            <div class="box-row">
-                <div class="box_edit">Page name:</div>
-                <div class="box_edit_small">Edit:</div>
-                <div class="box_edit_small">Delete:</div>
-            </div>
+            <div class="boxer">
+                <div class="box-row">
+                    <div class="box_edit">Page name:</div>
+                    <div class="box_edit_small">Edit:</div>
+                    <div class="box_edit_small">Posted by/Date and time:</div>
+                    <div class="box_edit_small">Edited by/Date and time:</div>
+                    <div class="box_edit_small">Delete:</div>
+                </div>
             <?php
-            $sql = 'ALTER TABLE pages AUTO_INCREMENT = 1';
-            $handler->query($sql);
             
             $i = 0;
         while($fetchp = $getp->fetch(PDO::FETCH_ASSOC)){
@@ -181,6 +175,12 @@
                         </div>
       		            <div class='box_edit_small'>
                             <a href='index.php?p=cms&do=edit&edit=" . $fetchp['ptitle'] . "'>Edit</a>
+                        </div>
+      		            <div class='box_edit_small'>
+                            " . $fetchp['puseridadd'] . " on " . $fetchp['postdate'] . "
+                        </div>
+      		            <div class='box_edit_small'>
+                            " . $fetchp['puseridedit'] . " on " . $fetchp['editdate'] . "
                         </div>
       		            <div class='box_edit_small'>
                             <a href='index.php?p=cms&do=edit&delete=" . $fetchp['ptitle'] . "'>Delete</a>
@@ -202,9 +202,6 @@
                     </div>
                     <div class='box_edit_small'>
                         <a href='index.php?p=cms&do=edit&edit=footer'>Edit</a>
-                    </div>
-                    <div class='box_edit_small'>
-                    
                     </div>
                  </div>        
                 </div>";

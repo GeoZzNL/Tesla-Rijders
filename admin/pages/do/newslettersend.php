@@ -1,5 +1,7 @@
 <?php
     $query = $handler->query('SELECT * FROM newsletter');
+    $queryc = $handler->query('SELECT * FROM settings');
+    $fetchc = $queryc->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="font3">Verstuur een nieuwsbrief</div>
 <?php
@@ -27,7 +29,7 @@
                     
                     while($fetch = $query->fetch(PDO::FETCH_ASSOC)){
                         $message = nl2br($newsletter);
-                        $headers = 'From: webmaster@example.com';
+                        $headers = 'From: ' . $fetchc['email'];
                     
                         mail($fetch['email'], $subject, $message, $headers);
                     }
@@ -83,7 +85,7 @@
                     
                     foreach($_POST['email'] as $to){
                         $message = nl2br($newsletter);
-                        $headers = 'From: webmaster@example.com';
+                        $headers = 'From: ' . $fetchc['email'];
                     
                         mail($to, $subject, $message, $headers);
                     }

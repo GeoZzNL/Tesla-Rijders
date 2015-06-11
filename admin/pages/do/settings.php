@@ -21,6 +21,10 @@
             <div class="box_edit_small"><input type="text" name="galleryn" value="<?php echo $fetcht['galleryn']; ?>" autocomplete="off" /></div>
         </div>
         <div class="box-row">
+            <div class="box_edit">Contact E-mail</div>
+            <div class="box_edit_small"><input type="email" name="email" value="<?php echo $fetcht['email']; ?>" autocomplete="off" /></div>
+        </div>
+        <div class="box-row">
             <div class="box_edit">Short description of the site</div>
             <div class="box_edit_small"><input type="text" name="description" value="<?php echo $fetcht['description']; ?>" autocomplete="off" /></div>
         </div>
@@ -37,6 +41,7 @@
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $sname = $_POST['sname'];
             $galleryn = $_POST['galleryn'];
+            $email = $_POST['email'];
             $description = ((!empty($_POST['description']))? $_POST['description'] : '');
             $keywords = ((!empty($_POST['keywords']))? $_POST['keywords'] : '');
             
@@ -55,17 +60,18 @@
             }
             $id = 1;
             
-            $sql = "UPDATE settings SET sname = :sname, gallery = :gallery, galleryn = :galleryn, description = :description, keywords = :keywords WHERE id = :sid";
+            $sql = "UPDATE settings SET sname = :sname, gallery = :gallery, galleryn = :galleryn, email = :email, description = :description, keywords = :keywords WHERE id = :sid";
             $query = $handler->prepare($sql);
             
             try{
             $query->execute(array(
-                ':sname'    => $sname,
-                ':gallery'  => $gallery,
-                ':galleryn' => $galleryn,
-                ':description' => $description,
-                ':keywords' => $keywords,
-                ':sid'      => $id
+                ':sname'        => $sname,
+                ':gallery'      => $gallery,
+                ':galleryn'     => $galleryn,
+                ':email'        => $email,
+                ':description'  => $description,
+                ':keywords'     => $keywords,
+                ':sid'          => $id
             ));
             header('Refresh:0');
             }

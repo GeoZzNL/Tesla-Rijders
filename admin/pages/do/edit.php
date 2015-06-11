@@ -155,8 +155,8 @@
                 <div class="box-row">
                     <div class="box_edit">Page name:</div>
                     <div class="box_edit_small">Edit:</div>
-                    <div class="box_edit_small">Posted by/Date and time:</div>
-                    <div class="box_edit_small">Edited by/Date and time:</div>
+                    <div class="box_edit_small">Posted by on Date and time:</div>
+                    <div class="box_edit_small">Edited by on Date and time:</div>
                     <div class="box_edit_small">Delete:</div>
                 </div>
             <?php

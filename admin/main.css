@@ -85,7 +85,6 @@ footer {
 .boxer {
     display: table;
     border-collapse: collapse;
-    width: 75%;
 }
 .boxer .box-row {
     display: table-row;

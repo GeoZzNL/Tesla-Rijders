@@ -35,7 +35,7 @@
             `galleryn` varchar(100) DEFAULT 'Default gallery',
             `gallery` varchar(10) DEFAULT 'false',
             `email` varchar(50) DEFAULT 'example@example.com',
-            `footer` varchar(500) DEFAULT 'This website is using Goat CMS.',
+            `footer` varchar(500) DEFAULT 'This website is using 1P5 CMS',
             `description` TEXT,
             `keywords` TEXT,
             PRIMARY KEY (`id`)

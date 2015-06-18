@@ -1,5 +1,5 @@
 <?php
-    $query = $handler->query('SELECT * FROM newsletter');
+    $query = $handler->query('SELECT * FROM newsletter ORDER BY email ASC');
     $queryc = $handler->query('SELECT * FROM settings');
     $fetchc = $queryc->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -54,18 +54,10 @@
         $i = 0;
             echo'<table class="newsletterlist">';    
         while($fetch = $query->fetch(PDO::FETCH_ASSOC)){
-            if($i == 0){
                 echo'<tr>';
-            }
             echo'<td><input type="checkbox" name="email[]" value="' . $fetch['email'] . '"></td><td>';
             echo $fetch['email'] . '</td>';
-            
-            if($i == 5){
                 echo'</tr>';
-                
-                $i = 0;
-            }
-            $i++;
         }
             echo'</table>';
     ?>

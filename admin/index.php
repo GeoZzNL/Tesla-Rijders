@@ -8,7 +8,7 @@
     $fetcht         = $gett->fetch(PDO::FETCH_ASSOC);
     $imagequery     = $handler->query("SELECT * FROM images");
     
-    $users = $handler->query('SELECT * FROM users');
+    $users = $handler->query("SELECT * FROM users");
     
     $fetch = $users->fetchall(PDO::FETCH_COLUMN, 1);
 ?>
@@ -17,6 +17,7 @@
 <head>
 	<meta name="author" content="Tom Heek" />
     <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.css" />
     <style type="text/css">
         a.fancybox img {
@@ -27,7 +28,7 @@
 	<title>CMS</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+    <meta charset="UTF-8" />
     <script src="codemirror/lib/codemirror.js"></script>
     <script src="codemirror/mode/javascript/javascript.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

@@ -61,10 +61,10 @@
                 <form method="post">
                     <label for="footer">Footer content:</label><br />
                     <textarea name="footer" id="footer" rows="10" cols="80"><?php echo $fetch['footer']; ?></textarea><br />
+                    <input type="submit" name="test" value="Submit" />
                     <script>
                         CKEDITOR.replace('footer', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]'});
                     </script>
-                    <input type="submit" name="test" value="Submit" />
                 </form>
     <?php
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -81,21 +81,21 @@
             $fetchp = $editp->fetch(PDO::FETCH_ASSOC);
     ?>
     <form method="post">
-    <label for="pname">Page name:</label><br />
-    <input type="text" name="pname" value="<?php echo $fetchp['pname']; ?>" autocomplete="off" /><br />
-    <label for="phidden">Hidden:</label><br />
-    <input type="checkbox" name="phidden" <?php echo($fetchp['phidden'] == 'on' ? 'checked="checked"' : ''); ?> /><hr />
-    <label for="pcontent">Header title:</label><br />
-    <textarea name="htitle" id="htitle"><?php echo $fetchp['htitle']; ?></textarea><br />
-    <label for="pcontent">Page content:</label><br />
-    <textarea name="pcontent" id="pcontent"><?php echo $fetchp['pcontent']; ?></textarea><br />
-    <input type="submit" value="Submit" />
-    <script>
-        CKEDITOR.replace('htitle', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', height: '150px'});
-    </script>
-    <script>
-        CKEDITOR.replace('pcontent', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', "filebrowserImageUploadUrl": "/plugins/imgupload.php"});
-    </script>
+        <label for="pname">Page name:</label><br />
+        <input type="text" name="pname" value="<?php echo $fetchp['pname']; ?>" autocomplete="off" /><br />
+        <label for="phidden">Hidden:</label><br />
+        <input type="checkbox" name="phidden" <?php echo($fetchp['phidden'] == 'on' ? 'checked="checked"' : ''); ?> /><hr />
+        <label for="pcontent">Header title:</label><br />
+        <textarea name="htitle" id="htitle"><?php echo $fetchp['htitle']; ?></textarea><br />
+        <label for="pcontent">Page content:</label><br />
+        <textarea name="pcontent" id="pcontent"><?php echo $fetchp['pcontent']; ?></textarea>
+        <input type="submit" value="Submit" />
+        <script>
+            CKEDITOR.replace('htitle', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', height: '150px'});
+        </script>
+        <script>
+            CKEDITOR.replace('pcontent', {enterMode : CKEDITOR.ENTER_BR, extraAllowedContent: 'section article header nav aside[lang,foo]', "filebrowserImageUploadUrl": "/plugins/imgupload.php"});
+        </script>
     </form>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){

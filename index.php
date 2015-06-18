@@ -242,14 +242,21 @@
                 
                 $query  = $handler->prepare('INSERT INTO newsletter (email, ip) VALUES (:email, :ip)');
                 
-                try{
-                    $query->execute(array(
-                        ':email'    => $email,
-                        ':ip'       => $ip
-                    ));
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    try{
+                        $query->execute(array(
+                            ':email'    => $email,
+                            ':ip'       => $ip
+                        ));
+                        
+                        echo'Je bent ingeschreven voor de nieuwsbrief.';
+                    }
+                    catch(PDOException $e){
+                        echo'Het e-mail address bestaat al.';
+                    }
                 }
-                catch(PDOException $e){
-                    echo'Het email address bestaat al.';
+                else{
+                    echo'Dat is geen e-mail address.';
                 }
             }
         ?>

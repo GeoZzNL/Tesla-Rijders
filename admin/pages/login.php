@@ -17,7 +17,7 @@ if(!isset($_SESSION['admin']) || !in_array($_SESSION['admin'], $fetch)){
 </div>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['login'])){        
+        if(isset($_POST['login'])){
             echo login($handler);
         }
     }
@@ -27,7 +27,7 @@ else{
 }
 ?>
 <?php
-if($users->rowCount() < 1){
+if($users->rowCount() == 0){
     if(!isset($_SESSION['admin'])){
 ?>
     <hr />

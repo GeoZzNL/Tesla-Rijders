@@ -3,6 +3,10 @@
 
     if(isset($_GET['delete'])){
         $query  = $handler->query("SELECT * FROM users WHERE username = '$username'");
+        $fetch  = $query->fetch(PDO::FETCH_ASSOC);
+        $username = $fetch['username'];
+        
+        echo $username;
         
         if($query->rowCount()){
             $query  = $handler->query("DELETE FROM users WHERE username = '$username'");

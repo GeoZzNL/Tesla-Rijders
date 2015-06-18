@@ -4,6 +4,7 @@ CREATE TABLE users(
     `password` varchar(255) NOT NULL,
     `email` varchar(50) NOT NULL,
     `rank`  int(10) DEFAULT '0',
+    `active` int(10) DEFAULT '1',    
     PRIMARY KEY (`id`),
     UNIQUE KEY `username` (`username`),
     UNIQUE KEY `email` (`email`)
@@ -31,7 +32,7 @@ CREATE TABLE settings(
     `galleryn` varchar(100) DEFAULT 'Default gallery',
     `gallery` varchar(10) DEFAULT 'false',
     `email` varchar(50) DEFAULT 'example@example.com',
-    `footer` varchar(500) DEFAULT 'This website is using Goat CMS.',
+    `footer` varchar(500) DEFAULT 'This website is using 1P5 CMS',
     `description` TEXT,
     `keywords` TEXT,
     PRIMARY KEY (`id`)

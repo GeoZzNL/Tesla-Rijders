@@ -10,21 +10,26 @@
         return preg_replace('#(^_+|_+$)#D', '', $string);
     }
     
+    //Check strpos array
+    function strposa($haystack, $needles=array(), $offset=0) {
+            $chr = array();
+            foreach($needles as $needle) {
+                    $res = strpos($haystack, $needle, $offset);
+                    if ($res !== false) $chr[$needle] = $res;
+            }
+            if(empty($chr)) return false;
+            return min($chr);
+    }
+    
     //Get title
     function title($fetcht, $fetchpn){
         if(isset($_GET['p'])){
-            if($_GET['p'] == 'cms' || $_GET['p'] == 'login'){
-                return 'Cms';
-            }
-            elseif($_GET['p'] == 'gallery'){
+            if($_GET['p'] == 'gallery'){
                 return $fetcht['sname'] . ' - ' . $fetcht['galleryn'];
             }
             else{
                 return $fetcht['sname'] . ' - ' . $fetchpn['pname'];
             }
-        }
-        else{
-            return $fetcht['sname'] . ' - ' . $fetchpn['pname'];
         }
     }
     
@@ -36,36 +41,40 @@
         $username       = $_POST['username'];
         $password       = $_POST['password'];
         $checkuser      = $handler->query("SELECT * FROM users WHERE username = '$username'");
-        $fetchpw        = $checkuser->fetch(PDO::FETCH_ASSOC);
-        $pw             = $fetchpw['password'];
+        $fetch          = $checkuser->fetch(PDO::FETCH_ASSOC);
+        $pw             = $fetch['password'];
         
         if(!empty($username) && !empty($password)){
-            $uid        = $handler->query("SELECT * FROM users WHERE username = '$username'");
-            $uiddisplay = (($uid->rowCount()? $uiddisplay = $uid->fetch(PDO::FETCH_ASSOC) : NULL)); 
+            $uiddisplay = (($checkuser->rowCount()? $uiddisplay = $checkuser->fetch(PDO::FETCH_ASSOC) : NULL)); 
             
             $query  = $handler->prepare("INSERT INTO loginattempts (u_id, ip) VALUES (:uiddisplay, :ip)");
             
-            try{
-                $query->execute(array(
-                ':uiddisplay'   => $uiddisplay['id'],
-                ':ip'           => $_SERVER['REMOTE_ADDR']
-                ));
-                
-                if(password_verify($_POST['password'], $pw)){
-                    $_SESSION['admin'] = $username;
+            if($fetch['active'] == 1){
+                try{
+                    $query->execute(array(
+                    ':uiddisplay'   => $uiddisplay['id'],
+                    ':ip'           => $_SERVER['REMOTE_ADDR']
+                    ));
                     
-                    header('Location: index.php?p=cms');
+                    if(password_verify($_POST['password'], $pw)){                    
+                            $_SESSION['admin'] = $username;
+                            
+                            header('Location: index.php?p=cms');
+                    }
+                    else{
+                        return'<div class="font4">That password is not correct.</div>';
+                    }
                 }
-                else{
-                    return'That password is not correct.';
+                catch(PDOException $e){
+                    echo $e->getMessage();
                 }
             }
-            catch(PDOException $e){
-                echo $e->getMessage();
+            else{
+                echo'<div class="font4">Het account is niet actief.</div>';
             }
         }
         else{
-            return'Please fill in all the fields.';
+            return'<div class="font4">Please fill in all the fields.</div>';
         }
     }
         
@@ -94,85 +103,98 @@
                     ':email'    => $email
                 ));
                 
-                return'<div class="font3">U hebt een account geregistreerd</div>';
+                return'<div class="font4">U hebt een account geregistreerd</div>';
                 }
                 catch(PDOException $e){
-                    return'Something went wrong, please try again.';
+                    return'<div class="font4">Something went wrong, please try again.</div>';
                 }
             }
             else{
-                return'De wachtwoorden kwamen niet overeen.';
+                return'<div class="font4">De wachtwoorden kwamen niet overeen.</div>';
             }
         }
         else{
-            return'<div class="font3">U kunt het veld niet leeglaten.</div>';
+            return'<div class="font4">U kunt het veld niet leeglaten.</div>';
         }
     }
     
     //Add page
     function add($pname, $titlef, $pcontent, $phidden, $htitle, $handler){
-        $puseridadd  = $_SESSION['admin'];
+        $puseridadd = $_SESSION['admin'];
+        $notallowed = array('<script>', '<plaintext>');
         
         /*$query = $handler->query("SELECT * FROM users WHERE username = '$puseridadd'");
         $fetch = $query->fetch(PDO::FETCH_ASSOC);
         $puseridadd = $fetch['id'];*/                
         
-        if(empty($pname)){
-            return"<div class='font4'>You can't leave a field empty.</div>";
+        
+        if(strposa($pname || $pcontent || $htitle, $notallowed)){
+            if(empty($pname)){
+                return"<div class='font4'>You can't leave a field empty.</div>";
+            }
+            else{
+                $sql = 'INSERT INTO pages (ptitle, pname, pcontent, phidden, htitle, puseridadd, postdate) VALUES (:ptitle, :pname, :pcontent, :phidden, :htitle, :puseridadd, current_timestamp)';
+                $query = $handler->prepare($sql);
+                
+                try{
+                    $query->execute(array(
+                    ':ptitle'       => $titlef,
+                    ':pname'        => $pname,
+                    ':pcontent'     => $pcontent,
+                    ':phidden'      => $phidden,
+                    ':htitle'       => $htitle,
+                    ':puseridadd'   => $puseridadd
+                    ));
+                    return'<div class="font4">The page has been submitted.</div>';
+                }
+                catch(PDOException $e){
+                    return'<div class="font4">Something went wrong, please try again.</div>';
+                }
+            }
         }
         else{
-            $sql = 'INSERT INTO pages (ptitle, pname, pcontent, phidden, htitle, puseridadd, postdate) VALUES (:ptitle, :pname, :pcontent, :phidden, :htitle, :puseridadd, current_timestamp)';
-            $query = $handler->prepare($sql);
-            
-            try{
-                $query->execute(array(
-                ':ptitle'       => $titlef,
-                ':pname'        => $pname,
-                ':pcontent'     => $pcontent,
-                ':phidden'      => $phidden,
-                ':htitle'       => $htitle,
-                ':puseridadd'   => $puseridadd
-                ));
-                return'<div class="font4">The page has been submitted.</div>';
-            }
-            catch(PDOException $e){
-                return'<div class="font4">Something went wrong, please try again.</div>';
-            }
+            return'<div class="font4">Je kan geen plaintext of script gebruiken.</div>';
         }
     }
     //Edit page
     function edit($handler, $id, $titlef, $pname, $phidden, $pcontent, $htitle){
         $puseridedit  = $_SESSION['admin'];
+        $notallowed = array('<script>', '<plaintext>');
         
         /*$query = $handler->query("SELECT * FROM users WHERE username = '$puseridedit'");
         $fetch = $query->fetch(PDO::FETCH_ASSOC);
         $puseridedit = $fetch['id'];*/
-                        
-        if(empty($pname)){
-            return"<div class='font4'>You can't leave a field empty.</div>";
+        
+        if(strposa($pname || $pcontent || $htitle, $notallowed)){
+            if(empty($pname)){
+                return"<div class='font4'>You can't leave a field empty.</div>";
+            }
+            else{
+                $sql = "UPDATE pages SET ptitle = :ptitle, pname = :pname, pcontent = :pcontent, phidden = :phidden, htitle = :htitle, puseridedit = :puseridedit, editdate = current_timestamp WHERE id = '$id'";
+                
+                $query = $handler->prepare($sql);
+                
+                try{
+                    $query->execute(array(
+                    ':ptitle'   	=> $titlef,
+                    ':pname'    	=> $pname,
+                    ':pcontent' 	=> $pcontent,
+                    ':phidden'  	=> $phidden,
+    				':htitle'		=> $htitle,
+                    ':puseridedit'  => $puseridedit
+                    ));
+                    
+                    header('Location: index.php?p=cms&do=edit&edit=' . $titlef);
+                    
+                    return'<div class="font4">The page has been submitted.</div>';
+                }
+                catch(PDOException $e){
+                    return'<div class="font4">Something went wrong, please try again.</div>';
+                }
+            }
         }
         else{
-            $sql = "UPDATE pages SET ptitle = :ptitle, pname = :pname, pcontent = :pcontent, phidden = :phidden, htitle = :htitle, puseridedit = :puseridedit, editdate = current_timestamp WHERE id = '$id'";
-            
-            $query = $handler->prepare($sql);
-            
-            try{
-                $query->execute(array(
-                ':ptitle'   	=> $titlef,
-                ':pname'    	=> $pname,
-                ':pcontent' 	=> $pcontent,
-                ':phidden'  	=> $phidden,
-				':htitle'		=> $htitle,
-                ':puseridedit'  => $puseridedit
-                ));
-                
-                header('Location: index.php?p=cms&do=edit&edit=' . $titlef);
-                
-                return'<div class="font4">The page has been submitted.</div>';
-            }
-            catch(PDOException $e){
-                return'<div class="font4">Something went wrong, please try again.</div>';
-            }
+            return'<div class="font4">Je kan geen plaintext of script gebruiken.</div>';
         }
     }
     //Edit image
@@ -337,7 +359,7 @@
                     
                     if($fetchpn['pname'] != NULL){
                         echo'
-                        <div class="font3">' . $fetchpn['pname'] . '</div>' .
+                        <div class="font4">' . $fetchpn['pname'] . '</div>' .
                         
                         $fetchpn['pcontent'];
                     }
@@ -348,14 +370,14 @@
             }
             else{
                 echo'
-                <div class="font3">' . $fetchpn['pname'] . '</div>' .
+                <div class="font4">' . $fetchpn['pname'] . '</div>' .
                 
                 $fetchpn['pcontent'];
             }
         }
         elseif($getp->rowcount() == 0){
             echo'
-            <div class="font3">Error</div>
+            <div class="font4">Error</div>
             There are no pages in the database.';
         }
     }
@@ -406,7 +428,7 @@
         }
         elseif($getp->rowcount() == 0){
             echo'
-            <div class="font3">Error</div>
+            <div class="font4">Error</div>
             There are no pages in the database.';
         }
     }

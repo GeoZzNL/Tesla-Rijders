@@ -27,6 +27,4 @@
     else{
         echo'Er zijn nog geen afbeeldingen in de galerij';
     }
-
-
 ?>

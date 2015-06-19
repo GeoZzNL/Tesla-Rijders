@@ -121,13 +121,12 @@
     //Add page
     function add($pname, $titlef, $pcontent, $phidden, $htitle, $handler){
         $puseridadd = $_SESSION['admin'];
-        $notallowed = array('<script>', '<plaintext>');
         
         /*$query = $handler->query("SELECT * FROM users WHERE username = '$puseridadd'");
         $fetch = $query->fetch(PDO::FETCH_ASSOC);
         $puseridadd = $fetch['id'];*/
         
-        if(strposa($pname, $notallowed)){
+        if(strip_tags($pname)){
             if(empty($pname)){
                 return"<div class='font4'>You can't leave a field empty.</div>";
             }
@@ -158,7 +157,6 @@
     //Edit page
     function edit($handler, $id, $titlef, $pname, $phidden, $pcontent, $htitle){
         $puseridedit  = $_SESSION['admin'];
-        $notallowed = array('<script>', '<plaintext>');
         
         /*$query = $handler->query("SELECT * FROM users WHERE username = '$puseridedit'");
         $fetch = $query->fetch(PDO::FETCH_ASSOC);

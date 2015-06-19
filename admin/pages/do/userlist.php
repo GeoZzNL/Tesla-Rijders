@@ -15,8 +15,14 @@
                 <td>" . $fetch['id'] . "</td>
             	<td>" . $fetch['username'] . "</td>
             	<td>" . $fetch['email'] . "</td>
-            	<td><a href='index.php?p=cms&do=deleteuser&delete=" . $fetch['username'] . "' style='color: red;'>Delete " . $fetch['username'] . "</a></td>
-            </tr>";
+            	<td>";
+                if($fetch['active'] == 1){
+                    echo"<a href='index.php?p=cms&do=actionuser&delete=" . $fetch['username'] . "' style='color: red;'>Delete " . $fetch['username'] . "</a></td>";
+                }
+                else{
+                    echo"<a href='index.php?p=cms&do=actionuser&activate=" . $fetch['username'] . "' style='color: green;'>Activeer " . $fetch['username'] . "</a></td>";
+                }
+            echo"</tr>";
     }
 ?>
 </table>

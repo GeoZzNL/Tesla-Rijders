@@ -56,7 +56,7 @@
                     ':ip'           => $_SERVER['REMOTE_ADDR']
                     ));
                     
-                    if(password_verify($_POST['password'], $pw)){                    
+                    if(password_verify($_POST['password'], $pw)){
                             $_SESSION['admin'] = $username;
                             
                             header('Location: index.php?p=cms');

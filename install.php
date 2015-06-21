@@ -8,6 +8,7 @@
             `password` varchar(255) NOT NULL,
             `email` varchar(50) NOT NULL,
             `rank`  int(10) DEFAULT '0',
+            `active` int(10) DEFAULT '1',    
             PRIMARY KEY (`id`),
             UNIQUE KEY `username` (`username`),
             UNIQUE KEY `email` (`email`)

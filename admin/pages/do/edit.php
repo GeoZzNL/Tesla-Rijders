@@ -13,7 +13,7 @@
                 }
                 elseif($_GET['edit'] == 'deleteall'){
                     while($fetchimage = $imagequery->fetch(PDO::FETCH_ASSOC)){
-                        unlink('pages/do/img/' . $fetchimage['imagen']);
+                        unlink('../pages/img/' . $fetchimage['imagen']);
                     }
                     $handler->query('TRUNCATE images');
                     
@@ -43,7 +43,7 @@
             
             echo"
                 <div class='box-row' style='background: $color'>
-                    <div class='box_edit'><img src='pages/do/img/" . $fetchimage['imagen'] . "' style='width: 50%; height: 10%;' /></div>
+                    <div class='box_edit'><img src='/pages/img/" . $fetchimage['imagen'] . "' style='width: 50%; height: 10%;' /></div>
                     <div class='box_edit'><a href='index.php?p=cms&do=edit&edit=editimage&edit=" . $fetchimage['id'] . "'>Delete</a></div>
                 </div>
             ";
